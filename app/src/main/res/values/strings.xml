@@ -1,0 +1,9 @@
+<resources>
+	<string name="app_name">i3 control</string>
+	<string name="mute">Mute</string>
+	<string name="vol_down">Vol Down</string>
+	<string name="vol_up">Vol Up</string>
+	<string name="previous">Previous</string>
+	<string name="play">Play</string>
+	<string name="next">Next</string>
+</resources>
