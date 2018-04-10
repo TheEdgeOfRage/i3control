@@ -26,7 +26,7 @@ def vol_up():
 
 @app.route('/prev')
 def prev():
-    call(['cmus-remote', '-p'])
+    call(['cmus-remote', '-r'])
     return ''
 
 
