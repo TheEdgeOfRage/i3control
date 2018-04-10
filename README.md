@@ -7,7 +7,7 @@ This is the first version, so everything is hardcoded and messy.
 
 Just change the url to your backend in the `ApiService` class and build the app.
 
-![App screenshot](https://i.imgur.com/0jrCoLl.png)
+![App screenshot](https://i.imgur.com/0jrCoLl.png?1)
 
 ## Python backend
 
