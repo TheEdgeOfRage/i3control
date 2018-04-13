@@ -10,5 +10,13 @@
 		<item name="android:colorBackground">@color/colorBackground</item>
 	</style>
 
+	<style name="DialogTheme" parent="@android:style/Theme.Material.Dialog">
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+		<item name="android:textColor">@color/colorForeground</item>
+		<item name="android:colorForeground">@color/colorForeground</item>
+		<item name="android:colorBackground">@color/colorBackground</item>
+	</style>
 
 </resources>
