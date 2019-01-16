@@ -24,6 +24,44 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
+	class RunnableQuery implements Runnable {
+		private Handler mHandler;
+		private boolean mRun = false;
+		private MainActivity context;
+
+		private RunnableQuery(MainActivity context) {
+			mHandler = new Handler(getMainLooper());
+			this.context = context;
+		}
+
+		private void start() {
+			if (mRun) {
+				return;
+			}
+			mRun = true;
+			mHandler.postDelayed(this, 1000);
+		}
+
+		void stop() {
+			if (!mRun) {
+				return;
+			}
+			mRun = false;
+			mHandler.removeCallbacks(this);
+		}
+
+		@Override
+		public void run() {
+			if (!mRun) {
+				return;
+			}
+			context.sendRequest("query", context);
+			mHandler.postDelayed(this, 1000);
+		}
+	}
+
+	RunnableQuery runnableQuery;
+
 	public void sendRequest(String endpoint, final Context context) {
 		RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -119,35 +157,25 @@ public class MainActivity extends AppCompatActivity {
 		findViewById(R.id.nextButton).setOnClickListener(buttonClickListener);
 		findViewById(R.id.shuffleButton).setOnClickListener(buttonClickListener);
 
-		class RunnableQuery implements Runnable {
-			private Handler mHandler;
-			private boolean mRun = false;
+		this.runnableQuery = new RunnableQuery(this);
+		this.runnableQuery.start();
+	}
 
-			RunnableQuery() {
-				mHandler = new Handler(getMainLooper());
-			}
+	@Override
+	protected void onResume() {
+		super.onResume();
+		this.runnableQuery.start();
+	}
 
-			public void start() {
-				mRun = true;
-				mHandler.postDelayed(this, 1000);
-			}
+	@Override
+	protected void onStop() {
+		super.onStop();
+		this.runnableQuery.stop();
+	}
 
-			void stop() {
-				mRun = false;
-				mHandler.removeCallbacks(this);
-			}
-
-			@Override
-			public void run() {
-				if (!mRun) {
-					return;
-				}
-				((MainActivity) context).sendRequest("query", context);
-				mHandler.postDelayed(this, 1000);
-			}
-		}
-
-		RunnableQuery runnableQuery = new RunnableQuery();
-		runnableQuery.start();
+	@Override
+	protected void onPause() {
+		super.onPause();
+		this.runnableQuery.stop();
 	}
 }
