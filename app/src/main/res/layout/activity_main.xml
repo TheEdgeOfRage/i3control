@@ -4,114 +4,130 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context="me.xor_hydrogen.i3control.MainActivity">
+	tools:context="com.theedgeofrage.i3control.MainActivity">
 
 	<ImageButton
 		android:id="@+id/muteButton"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="16dp"
-		android:layout_marginEnd="16dp"
 		android:layout_marginStart="64dp"
-		android:layout_marginTop="128dp"
+		android:layout_marginTop="256dp"
+		android:layout_marginEnd="16dp"
+		android:contentDescription="@string/mute"
 		android:scaleX="2"
 		android:scaleY="2"
 		android:tint="@color/colorForeground"
-		app:layout_constraintBottom_toTopOf="@+id/prevButton"
 		app:layout_constraintEnd_toStartOf="@+id/volDownButton"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
-		app:srcCompat="@drawable/ic_volume_mute_black_24dp"
-		android:contentDescription="@string/mute" />
+		app:srcCompat="@drawable/ic_volume_mute_black_24dp" />
 
 	<ImageButton
 		android:id="@+id/volDownButton"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="16dp"
-		android:layout_marginEnd="16dp"
 		android:layout_marginStart="16dp"
-		android:layout_marginTop="128dp"
+		android:layout_marginTop="256dp"
+		android:layout_marginEnd="16dp"
+		android:contentDescription="@string/vol_down"
 		android:scaleX="2"
 		android:scaleY="2"
 		android:tint="@color/colorForeground"
-		app:layout_constraintBottom_toTopOf="@+id/playButton"
 		app:layout_constraintEnd_toStartOf="@+id/volUpButton"
 		app:layout_constraintStart_toEndOf="@+id/muteButton"
 		app:layout_constraintTop_toTopOf="parent"
-		app:srcCompat="@drawable/ic_volume_down_black_24dp"
-		android:contentDescription="@string/vol_down"/>
+		app:srcCompat="@drawable/ic_volume_down_black_24dp" />
 
 	<ImageButton
 		android:id="@+id/volUpButton"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="16dp"
-		android:layout_marginEnd="64dp"
 		android:layout_marginStart="16dp"
-		android:layout_marginTop="128dp"
+		android:layout_marginTop="256dp"
+		android:layout_marginEnd="64dp"
+		android:contentDescription="@string/vol_up"
 		android:scaleX="2"
 		android:scaleY="2"
 		android:tint="@color/colorForeground"
-		app:layout_constraintBottom_toTopOf="@+id/nextButton"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toEndOf="@+id/volDownButton"
 		app:layout_constraintTop_toTopOf="parent"
-		app:srcCompat="@drawable/ic_volume_up_black_24dp"
-		android:contentDescription="@string/vol_up"/>
-
-	<ImageButton
-		android:id="@+id/prevButton"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginBottom="256dp"
-		android:layout_marginEnd="16dp"
-		android:layout_marginStart="64dp"
-		android:layout_marginTop="16dp"
-		android:scaleX="2"
-		android:scaleY="2"
-		android:tint="@color/colorForeground"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toStartOf="@+id/playButton"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/muteButton"
-		app:srcCompat="@drawable/ic_skip_previous_black_24dp"
-		android:contentDescription="@string/previous"/>
+		app:srcCompat="@drawable/ic_volume_up_black_24dp" />
 
 	<ImageButton
 		android:id="@+id/playButton"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="256dp"
-		android:layout_marginEnd="16dp"
 		android:layout_marginStart="16dp"
-		android:layout_marginTop="16dp"
+		android:layout_marginTop="64dp"
+		android:layout_marginEnd="16dp"
+		android:contentDescription="@string/play"
 		android:scaleX="2"
 		android:scaleY="2"
 		android:tint="@color/colorForeground"
-		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toStartOf="@+id/prevButton"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/muteButton"
+		app:srcCompat="@drawable/ic_play_arrow_black_24dp" />
+
+	<ImageButton
+		android:id="@+id/prevButton"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="64dp"
+		android:layout_marginEnd="16dp"
+		android:contentDescription="@string/previous"
+		android:scaleX="2"
+		android:scaleY="2"
+		android:tint="@color/colorForeground"
 		app:layout_constraintEnd_toStartOf="@+id/nextButton"
-		app:layout_constraintStart_toEndOf="@+id/prevButton"
+		app:layout_constraintStart_toEndOf="@+id/playButton"
 		app:layout_constraintTop_toBottomOf="@+id/volDownButton"
-		app:srcCompat="@drawable/ic_play_arrow_black_24dp"
-		android:contentDescription="@string/play"/>
+		app:srcCompat="@drawable/ic_skip_previous_black_24dp" />
 
 	<ImageButton
 		android:id="@+id/nextButton"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="256dp"
-		android:layout_marginEnd="64dp"
 		android:layout_marginStart="16dp"
-		android:layout_marginTop="16dp"
+		android:layout_marginTop="64dp"
+		android:layout_marginEnd="16dp"
+		android:contentDescription="@string/next"
 		android:scaleX="2"
 		android:scaleY="2"
 		android:tint="@color/colorForeground"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toEndOf="@+id/playButton"
+		app:layout_constraintEnd_toStartOf="@id/shuffleButton"
+		app:layout_constraintStart_toEndOf="@+id/prevButton"
 		app:layout_constraintTop_toBottomOf="@+id/volUpButton"
-		app:srcCompat="@drawable/ic_skip_next_black_24dp"
-		android:contentDescription="@string/next"/>
+		app:srcCompat="@drawable/ic_skip_next_black_24dp" />
+
+	<ImageButton
+		android:id="@+id/shuffleButton"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="64dp"
+		android:layout_marginEnd="16dp"
+		android:contentDescription="@string/next"
+		android:scaleX="2"
+		android:scaleY="2"
+		android:tint="@color/colorForeground"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toEndOf="@+id/nextButton"
+		app:layout_constraintTop_toBottomOf="@+id/volUpButton"
+		app:srcCompat="@drawable/ic_shuffle_black_24dp" />
+
+	<TextView
+		android:id="@+id/currentlyPlayingText"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="32dp"
+		android:layout_marginTop="64dp"
+		android:layout_marginEnd="32dp"
+		android:textSize="18sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/playButton" />
 
 </android.support.constraint.ConstraintLayout>

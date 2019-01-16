@@ -1,4 +1,4 @@
-package me.xor_hydrogen.i3control;
+package com.theedgeofrage.i3control;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
