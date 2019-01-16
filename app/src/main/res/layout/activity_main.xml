@@ -125,6 +125,7 @@
 		android:layout_marginStart="32dp"
 		android:layout_marginTop="64dp"
 		android:layout_marginEnd="32dp"
+		android:textAlignment="center"
 		android:textSize="18sp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
