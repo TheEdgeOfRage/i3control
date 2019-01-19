@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
 				return;
 			}
 			mRun = true;
-			mHandler.postDelayed(this, 1000);
+			context.sendRequest("query", context);
+			mHandler.postDelayed(this, 2000);
 		}
 
 		void stop() {
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 				return;
 			}
 			context.sendRequest("query", context);
-			mHandler.postDelayed(this, 1000);
+			mHandler.postDelayed(this, 2000);
 		}
 	}
 
@@ -135,15 +136,19 @@ public class MainActivity extends AppCompatActivity {
 						break;
 					case R.id.prevButton:
 						((MainActivity)context).sendRequest("prev", context);
+						((MainActivity)context).sendRequest("query", context);
 						break;
 					case R.id.playButton:
 						((MainActivity)context).sendRequest("play", context);
+						((MainActivity)context).sendRequest("query", context);
 						break;
 					case R.id.nextButton:
 						((MainActivity)context).sendRequest("next", context);
+						((MainActivity)context).sendRequest("query", context);
 						break;
 					case R.id.shuffleButton:
 						((MainActivity)context).sendRequest("shuffle", context);
+						((MainActivity)context).sendRequest("query", context);
 						break;
 				}
 			}
