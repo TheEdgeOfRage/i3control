@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 		SharedPreferences settings = context.getSharedPreferences(
 				context.getApplicationContext().getPackageName() + "_preferences", 0);
 		String host = settings.getString("pref_host", "");
-		if (host.equals("")) {
+		if (host == null || host.equals("")) {
 			Toast.makeText(context, "No host set", Toast.LENGTH_SHORT).show();
 			return;
 		}
@@ -81,7 +82,21 @@ public class MainActivity extends AppCompatActivity {
 				if (response.length() > 0) {
 					try {
 						String current = response.getString("artist") + " - " + response.getString("title");
-						((TextView)findViewById(R.id.currentlyPlayingText)).setText(current);
+						TextView statusTextView = findViewById(R.id.currentlyPlayingText);
+						ImageButton playButton = findViewById(R.id.playButton);
+						ImageButton shuffleButton = findViewById(R.id.shuffleButton);
+
+						statusTextView.setText(current);
+						if (response.getBoolean("playing")) {
+							playButton.setImageResource(R.drawable.ic_pause_black_24dp);
+						} else {
+							playButton.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+						}
+						if (response.getBoolean("shuffle")) {
+							shuffleButton.setColorFilter(getColor(R.color.colorAccent), android.graphics.PorterDuff.Mode.SRC_IN);
+						} else {
+							shuffleButton.setColorFilter(getColor(R.color.colorForeground), android.graphics.PorterDuff.Mode.SRC_IN);
+						}
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -89,7 +104,10 @@ public class MainActivity extends AppCompatActivity {
 			}
 		}, new Response.ErrorListener() {
 			@Override
-			public void onErrorResponse(VolleyError error) {
+			public void onErrorResponse(VolleyError volleyError) {
+				if(volleyError.networkResponse != null && volleyError.networkResponse.data != null){
+					Toast.makeText(context, volleyError.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
+				}
 			}
 		});
 
@@ -119,36 +137,36 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		final Context context = this;
+		final MainActivity context = this;
 
 		View.OnClickListener buttonClickListener = new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				switch (v.getId()) {
 					case R.id.muteButton:
-						((MainActivity)context).sendRequest("mute", context);
+						context.sendRequest("mute", context);
 						break;
 					case R.id.volDownButton:
-						((MainActivity)context).sendRequest("vol_down", context);
+						context.sendRequest("vol_down", context);
 						break;
 					case R.id.volUpButton:
-						((MainActivity)context).sendRequest("vol_up", context);
+						context.sendRequest("vol_up", context);
 						break;
 					case R.id.prevButton:
-						((MainActivity)context).sendRequest("prev", context);
-						((MainActivity)context).sendRequest("query", context);
+						context.sendRequest("prev", context);
+						context.sendRequest("query", context);
 						break;
 					case R.id.playButton:
-						((MainActivity)context).sendRequest("play", context);
-						((MainActivity)context).sendRequest("query", context);
+						context.sendRequest("play", context);
+						context.sendRequest("query", context);
 						break;
 					case R.id.nextButton:
-						((MainActivity)context).sendRequest("next", context);
-						((MainActivity)context).sendRequest("query", context);
+						context.sendRequest("next", context);
+						context.sendRequest("query", context);
 						break;
 					case R.id.shuffleButton:
-						((MainActivity)context).sendRequest("shuffle", context);
-						((MainActivity)context).sendRequest("query", context);
+						context.sendRequest("shuffle", context);
+						context.sendRequest("query", context);
 						break;
 				}
 			}
