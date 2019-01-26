@@ -60,14 +60,16 @@ def query():
 			status['playing'] = True
 		elif line == 'status paused':
 			status['playing'] = False
-		elif line.startswith('tag artist '):
-			status['artist'] = line[11:]
-		elif line.startswith('tag title '):
-			status['title'] = line[10:]
 		elif line == 'set shuffle true':
 			status['shuffle'] = True
 		elif line == 'set shuffle false':
 			status['shuffle'] = False
+		elif line.startswith('tag artist '):
+			status['artist'] = line[11:]
+		elif line.startswith('tag album '):
+			status['album'] = line[10:]
+		elif line.startswith('tag title '):
+			status['title'] = line[10:]
 
 	return jsonify(status)
 

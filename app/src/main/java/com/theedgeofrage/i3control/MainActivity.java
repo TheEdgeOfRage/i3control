@@ -81,12 +81,14 @@ public class MainActivity extends AppCompatActivity {
 			public void onResponse(JSONObject response) {
 				if (response.length() > 0) {
 					try {
-						String current = response.getString("artist") + " - " + response.getString("title");
-						TextView statusTextView = findViewById(R.id.currentlyPlayingText);
+						TextView statusTextView = findViewById(R.id.statusText);
+						TextView albumTextView = findViewById(R.id.albumText);
 						ImageButton playButton = findViewById(R.id.playButton);
 						ImageButton shuffleButton = findViewById(R.id.shuffleButton);
 
+						String current = response.getString("artist") + " - " + response.getString("title");
 						statusTextView.setText(current);
+						albumTextView.setText(response.getString("album"));
 						if (response.getBoolean("playing")) {
 							playButton.setImageResource(R.drawable.ic_pause_black_24dp);
 						} else {
